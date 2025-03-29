@@ -1,6 +1,5 @@
 import { describe, it } from 'vitest';
-import { renderSuspended } from '@nuxt/test-utils/runtime';
-import { screen } from '@testing-library/vue';
+import { screen, render } from '@testing-library/vue';
 import TodoList from '../TodoList.vue';
 import { server } from '~/vitest.setup';
 import { http, HttpResponse } from 'msw';
@@ -15,7 +14,7 @@ describe('TodoList Nuxt', () => {
       }),
     );
 
-    await renderSuspended(TodoList);
+    render(TodoList);
     await screen.findByText('Todo 3');
   });
 });
